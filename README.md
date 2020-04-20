@@ -40,11 +40,20 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+A relational database is a type of database that uses a structure that allows the developer to identify and access data in relation to another piece of data in the database. The database is organized into tables which contains columns (fields) and rows (records). SQL (Structured Query Language) is a programming language used to communicate with and (access) the data which is stored in a Relational Database Management System.
+
 - [ ] Why do tables need a `primary key`?
+
+The primary key in a table is used to provide a unique identifier for each record in the table. Without the primary key, it would be difficult to differentiate one record from another in the table.
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+A column that references the primary key on another table is called a "Foreign Key". The foreign key links the column to the 'id' of another table.
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+An intermediary table that holds foreign keys that reference the primary key on the related tables is needed for a "many to many" relationship between two tables.
+
 
 ## Minimum Viable Product
 
