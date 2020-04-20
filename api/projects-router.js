@@ -44,7 +44,7 @@ router.post('/', async (req, res, next) => {
     }
 });
 
-router.get('/resource', async (req, res, next) => {
+router.get('/resource/all', async (req, res, next) => {
 
     try {
         const results = await Projects.getResources();
@@ -78,6 +78,36 @@ router.post('/resource', async (req, res, next) => {
     try {
         const added = await Projects.addResource(body);
         res.status(201).json({ message: 'Successfully added resource', added });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+
+router.post('/:id/resource', async (req, res, next) => {
+    const { id } = req.params;
+    const body = req.body;
+    body.Resource = id;
+
+    try {
+        const added = await Projects.addProjectResource(body, id);
+        if (added) {
+        res.status(201).json({ message: 'Successfully added resource to project', added });
+        }
+        else {
+            res.status(404).json({ message: 'Invalid id' })
+        }
+    }
+    catch (error) {
+        next(error);
+    }
+});
+
+router.get('/task/all', async (req, res, next) => {
+    try {
+        const results = await Projects.getTasks();
+        results.forEach(task => task.Completed ? task.Completed = true : task.Completed = false)
+        res.status(200).json(results);
     }
     catch (error) {
         next(error);
